@@ -11,6 +11,7 @@ public class ConferenceRoomDto {
     private Integer seats;
     private Integer standingPlaces;
     private Integer hammocks;
+    private Boolean available = true;
 
     ///// Getters and Setters //////
 
@@ -68,6 +69,14 @@ public class ConferenceRoomDto {
 
     public void setHammocks(Integer hammocks) {
         this.hammocks = hammocks;
+    }
+
+    public Boolean getAvailable() {
+        return available;
+    }
+
+    public void setAvailable(Boolean available) {
+        this.available = available;
     }
 
 

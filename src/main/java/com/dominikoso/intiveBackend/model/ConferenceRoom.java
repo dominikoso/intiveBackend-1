@@ -21,19 +21,19 @@ public class ConferenceRoom {
 
     @Column(name = "roomName", unique = true)
     @NotEmpty(message = "Room name cannot be empty or blank")
-    @Size(min=1,max=20)
+    @Size(min=1,max=20, message = "Room name cannot be empty or blank")
     private String roomName;
 
     @Column(name = "roomId", unique = true)
-    @Size(max=20)
+    @Size(max=20, message = "Room Id length must be lower than or equal 20")
     private String roomId;
 
     @Column(name="floor")
-    @Range(min=0, max=10)
+    @Range(min=0, max=10, message = "Floor must not be greater than 10 and lower than 0")
     private Integer floor;
 
-    @Column(name="isAvailable", columnDefinition = "boolean default true")
-    private Boolean isAvailable;
+    @Column(name="available", columnDefinition = "boolean default true")
+    private Boolean available;
 
     @Column(name="seats")
     @Range(min=0)
@@ -81,13 +81,9 @@ public class ConferenceRoom {
         this.floor = floor;
     }
 
-    public Boolean getAvailable() {
-        return isAvailable;
-    }
+    public Boolean getAvailable() { return available; }
 
-    public void setAvailable(Boolean available) {
-        isAvailable = available;
-    }
+    public void setAvailable(Boolean available) { this.available = available; }
 
     public Integer getSeats() {
         return seats;

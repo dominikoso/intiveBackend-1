@@ -4,6 +4,7 @@ import com.dominikoso.intiveBackend.dto.OrganizationDto;
 import com.dominikoso.intiveBackend.model.Organization;
 import com.dominikoso.intiveBackend.repository.OrganizationRepository;
 import com.dominikoso.intiveBackend.service.OrganizationService;
+import com.dominikoso.intiveBackend.tools.CopyNonNullPropetiesTool;
 import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.BeanWrapperImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,28 +33,11 @@ public class OrganizationServiceImpl implements OrganizationService {
         return list;
     }
 
-    public static Object copyNonNullProperties(Object target, Object in) {
-        if (in == null || target == null || target.getClass() != in.getClass()) return null;
-
-        final BeanWrapper src = new BeanWrapperImpl(in);
-        final BeanWrapper trg = new BeanWrapperImpl(target);
-
-        for (final Field property : target.getClass().getDeclaredFields()) {
-            Object providedObject = src.getPropertyValue(property.getName());
-            if ((providedObject != null && !(providedObject instanceof Collection<?>))) {
-                trg.setPropertyValue(
-                        property.getName(),
-                        providedObject);
-            }
-        }
-        return target;
-    }
-
     @Override
     public void update(Organization organization){
         Long id = organization.getId();
         Organization forUpdate = organizationRepository.findById(id).orElse(null);
-        copyNonNullProperties(forUpdate, organization);
+        CopyNonNullPropetiesTool.copyNonNullProperties(forUpdate, organization);
         organizationRepository.save(forUpdate);
     }
 
