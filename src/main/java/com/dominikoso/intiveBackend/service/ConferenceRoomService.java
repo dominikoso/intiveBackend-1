@@ -6,6 +6,7 @@ import com.dominikoso.intiveBackend.model.ConferenceRoom;
 import java.util.List;
 
 public interface ConferenceRoomService {
+    ConferenceRoom findByRoomName(String roomName);
     ConferenceRoom findById(Long id);
     List<ConferenceRoom> findAll();
     ConferenceRoom save(ConferenceRoomDto conferenceRoom);

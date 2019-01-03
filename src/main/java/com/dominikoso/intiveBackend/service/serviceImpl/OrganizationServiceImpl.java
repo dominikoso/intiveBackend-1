@@ -23,6 +23,11 @@ public class OrganizationServiceImpl implements OrganizationService {
     private OrganizationRepository organizationRepository;
 
     @Override
+    public Organization findByOrgName(String orgName){
+        return organizationRepository.findByOrgName(orgName);
+    }
+
+    @Override
     public Organization findById(Long id){
         return organizationRepository.findById(id).orElse(null);
     }

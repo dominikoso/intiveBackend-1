@@ -6,6 +6,7 @@ import com.dominikoso.intiveBackend.model.Organization;
 import java.util.List;
 
 public interface OrganizationService {
+    Organization findByOrgName(String orgName);
     Organization findById(Long id);
     List<Organization> findAll();
     Organization save(OrganizationDto organization);

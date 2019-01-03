@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ConferenceRoomRepository extends CrudRepository<ConferenceRoom, Long> {
+    ConferenceRoom findByRoomName(String roomName);
 }

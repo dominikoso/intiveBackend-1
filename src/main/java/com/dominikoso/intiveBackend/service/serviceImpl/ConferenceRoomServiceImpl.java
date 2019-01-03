@@ -18,6 +18,11 @@ public class ConferenceRoomServiceImpl implements ConferenceRoomService {
     private ConferenceRoomRepository conferenceRoomRepository;
 
     @Override
+    public ConferenceRoom findByRoomName(String roomName){
+        return conferenceRoomRepository.findByRoomName(roomName);
+    }
+
+    @Override
     public ConferenceRoom findById(Long id){ return conferenceRoomRepository.findById(id).orElse(null); }
 
     public List<ConferenceRoom> findAll() {
