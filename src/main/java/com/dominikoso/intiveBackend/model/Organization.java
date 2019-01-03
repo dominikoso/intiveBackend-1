@@ -24,7 +24,7 @@ public class Organization implements Serializable {
 
     @NaturalId
     @Column(name = "orgName", unique = true)
-    @NotEmpty(message = "Organization Name cannot be empty or blank")
+    @NotBlank(message = "Organization Name cannot be empty or blank")
     @Size(min=2,max=20, message = "Length of Organization Name greater than or equal 2 and less than or equal 20")
     private String orgName;
 

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
@@ -20,6 +21,7 @@ public class ConferenceRoomReservation implements Serializable {
 
     //@NotEmpty(message = "Organization Name cannot be empty or blank")
     @ManyToOne
+    @NotNull(message = "Organization Name must exist")
     @JoinColumn(name = "orgName", referencedColumnName = "orgName")
     //@Size(min=2,max=20, message = "Length of Organization Name greater than or equal 2 and less than or equal 20")
     private Organization organization;
@@ -32,6 +34,7 @@ public class ConferenceRoomReservation implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "conferenceRoomId")
+    @NotNull(message = "Conference room name must exist")
     private ConferenceRoom conferenceRoom;
 
     ///// Getters and Setters //////

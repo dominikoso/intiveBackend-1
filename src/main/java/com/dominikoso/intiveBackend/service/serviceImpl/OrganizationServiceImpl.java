@@ -5,15 +5,10 @@ import com.dominikoso.intiveBackend.model.Organization;
 import com.dominikoso.intiveBackend.repository.OrganizationRepository;
 import com.dominikoso.intiveBackend.service.OrganizationService;
 import com.dominikoso.intiveBackend.tools.CopyNonNullPropetiesTool;
-import org.springframework.beans.BeanWrapper;
-import org.springframework.beans.BeanWrapperImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 @Service(value="organizationService")
@@ -52,7 +47,7 @@ public class OrganizationServiceImpl implements OrganizationService {
     }
 
     @Override
-    public Organization save(OrganizationDto organization){
+    public Organization save(OrganizationDto organization) {
         Organization newOrganization = new Organization();
         newOrganization.setOrgName(organization.getOrgName());
         return organizationRepository.save(newOrganization);
