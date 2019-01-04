@@ -8,7 +8,7 @@ These instructions will get you the project up and running on your local machine
 
 ### Prerequisites
 
-Things you need to build and run this application
+Things you will need to build, run and test this application
 
 ```
 Gradle, Java, cURL
