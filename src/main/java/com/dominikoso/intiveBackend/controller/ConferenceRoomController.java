@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.ConstraintViolationException;
 import java.util.List;
 
-// TO DO IN FUTURE - REMOVE DUPLICATES
 @SuppressWarnings("Duplicates")
 @RequestMapping("/croom")
 @RestController
@@ -40,7 +39,7 @@ public class ConferenceRoomController {
         try {
             response = conferenceRoomService.save(ConferenceRoom);
         }catch (DataAccessException e){
-            response = "Failed to Create Record: Room with specified name or Id already exist";
+            response = "Failed to create record: \nRoom with specified name or Id already exist";
             responseStatus = HttpStatus.BAD_REQUEST;
         }catch (ConstraintViolationException e){
             response = "Failed to create record: \n";
@@ -52,12 +51,12 @@ public class ConferenceRoomController {
 
     @RequestMapping(value = "/update", method = RequestMethod.PATCH)
     public ResponseEntity updateRecord (@RequestBody ConferenceRoom ConferenceRoom) {
-        String response = "Successfully Updated Record";
+        String response = "Successfully updated record";
         HttpStatus responseStatus = HttpStatus.OK;
         try {
             conferenceRoomService.update(ConferenceRoom);
         }catch (DataAccessException e){
-            response = "Failed to Update Record: "+e.getMessage();
+            response = "Failed to update record: \n"+e.getMessage();
             responseStatus = HttpStatus.BAD_REQUEST;
         }catch (ConstraintViolationException e){
             response = "Failed to update record: \n";
@@ -69,12 +68,12 @@ public class ConferenceRoomController {
 
     @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
     public ResponseEntity deleteRecord (@RequestBody ConferenceRoomDto ConferenceRoom) {
-        String response = "Successfully Deleted Record";
+        String response = "Successfully deleted record";
         HttpStatus responseStatus = HttpStatus.OK;
         try {
             conferenceRoomService.delete(ConferenceRoom.getId());
         }catch (DataAccessException e){
-            response = "Failed to Delete Record: "+e.getMessage();
+            response = "Failed to delete record: \n"+e.getMessage();
             responseStatus = HttpStatus.BAD_REQUEST;
         }catch (ConstraintViolationException e){
             response = "Failed to delete record: \n";

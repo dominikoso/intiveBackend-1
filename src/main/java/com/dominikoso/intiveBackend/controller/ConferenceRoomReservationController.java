@@ -14,7 +14,6 @@ import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import java.util.List;
 
-// TO DO IN FUTURE - REMOVE DUPLICATES
 @SuppressWarnings("Duplicates")
 @RequestMapping("/croom_res")
 @RestController
@@ -75,7 +74,7 @@ public class ConferenceRoomReservationController {
         try {
             conferenceRoomReservationService.delete(conferenceRoomReservation.getId());
         }catch (DataAccessException e){
-            response = "Failed to delete record: "+e.getMessage();
+            response = "Failed to delete record: \n"+e.getMessage();
             responseStatus = HttpStatus.BAD_REQUEST;
         }catch (ConstraintViolationException e){
             response = "Failed to delete record: \n";

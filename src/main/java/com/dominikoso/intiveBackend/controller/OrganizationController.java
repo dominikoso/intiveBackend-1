@@ -13,8 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.ConstraintViolationException;
 import java.util.List;
 
-// TO DO IN FUTURE - REMOVE DUPLICATES
-// Make Messages into global variables
+// TO DO IN FUTURE - REMOVE DUPLICATES IN CLEVER WAY
 @SuppressWarnings("Duplicates")
 @RequestMapping("/org")
 @RestController
@@ -39,7 +38,7 @@ public class OrganizationController {
         try {
            response = organizationService.save(organization);
         }catch (DataAccessException e){
-            response = "Failed to create record: Organization with specified name already exist";
+            response = "Failed to create record: \nOrganization with specified name already exist";
             responseStatus = HttpStatus.BAD_REQUEST;
         }catch (ConstraintViolationException e){
             response = "Failed to create record: \n";
@@ -56,7 +55,7 @@ public class OrganizationController {
         try {
             organizationService.update(organization);
         }catch (DataAccessException e){
-            response = "Failed to update record: "+e.getMessage();
+            response = "Failed to update record: \n"+e.getMessage();
             responseStatus = HttpStatus.BAD_REQUEST;
         }catch (ConstraintViolationException e){
             response = "Failed to update record: \n";
@@ -73,7 +72,7 @@ public class OrganizationController {
         try {
             organizationService.delete(organization.getId());
         }catch (DataAccessException e){
-            response = "Failed to delete record: "+e.getMessage();
+            response = "Failed to delete record: \n"+e.getMessage();
             responseStatus = HttpStatus.BAD_REQUEST;
         }catch (ConstraintViolationException e){
             response = "Failed to delete record: \n";

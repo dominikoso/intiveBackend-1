@@ -17,9 +17,9 @@ Gradle, Java, cURL
 ## Deployment and Using
 
 ### Building and Running
-A step by step series of examples that tell you how to get a development env running
+Step by step series of examples that tell you how to get a development env running
 
-First navigate to directory of downloaded repository,
+First navigate to directory of downloaded repository.
 Next run gradle tasks
 
 **For Windows**
@@ -31,7 +31,7 @@ gradlew.bat clean bootJar
 gradlew clean bootJar
 ```
 
-After that navigate to build *build/libs/* and run
+After that navigate to *build/libs/* and run
 
 ```
 java -jar intiveBackend-0.9_21.jar
@@ -52,7 +52,7 @@ gradlew clean bootRun
 
 ## Example usage of using cURL
 
-All application functionalities can be tested using cURL, in this example I will show you how to add conference room to database.
+All application functionality can be tested using cURL. In this example I will show you how to add conference room to database.
 
 **Windows - Invoke-RestMethod**
 ```bash
@@ -64,7 +64,7 @@ Invoke-RestMethod -Uri http://localhost:8080/croom/create -Method POST -Body '{"
 curl -d '{"roomName":"Black Room", "roomId":"103", "floor":"10", "seats":"15", "standingPlaces":"50", "hammocks":"15"}' -H "Content-Type: application/json" -X POST http://localhost:8080/croom/create
 ```
 
-Both commands will return us the same, but with diffrent formating:
+Both commands will return us the same, but with different formatting:
 
 **Invoke-RestMethod**
 ```text
